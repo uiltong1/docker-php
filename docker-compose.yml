@@ -4,7 +4,7 @@ services:
     build:
       context: .docker/web
       dockerfile: Dockerfile
-    image: php
+    image: web
     container_name: web
     restart: unless-stopped
     working_dir: /var/www/html
@@ -13,11 +13,11 @@ services:
     ports:
       - 80:80
     depends_on:
-      - mysql
+      - db
     networks:
       - server
 
-  mysql:
+  db:
     image: mysql:8.0
     container_name: db
     restart: unless-stopped
