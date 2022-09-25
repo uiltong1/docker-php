@@ -26,7 +26,7 @@ RUN pecl install apfd  && docker-php-ext-enable apfd
 
 
 # Copy configuration vhost apache
-COPY ./vhost.conf /etc/apache2/sites-available/000-default.conf
+COPY ./apache/vhost.conf /etc/apache2/sites-available/000-default.conf
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

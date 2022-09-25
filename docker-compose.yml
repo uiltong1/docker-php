@@ -1,11 +1,11 @@
 version: "3.7"
 services:
-  php:
+  web:
     build:
-      context: .docker/php
+      context: .docker/web
       dockerfile: Dockerfile
     image: php
-    container_name: php
+    container_name: web
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:
@@ -15,7 +15,7 @@ services:
     depends_on:
       - mysql
     networks:
-      - php_services
+      - server
 
   mysql:
     image: mysql:8.0
@@ -29,8 +29,8 @@ services:
     ports:
       - 3306:3306
     networks:
-      - php_services
+      - server
 
 networks:
-  php_services:
+  server:
     driver: bridge
